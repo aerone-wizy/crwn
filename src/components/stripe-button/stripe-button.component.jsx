@@ -7,7 +7,6 @@ const StripeCheckoutButton = ({ price }) => {
     "pk_test_51HKEbTEOJjei54XctZKVJSqn0ST76m44yeLpiBok1kjzIaIpndecIJ5M4zz56OQyXksT0g0VTViLNl4X31dUgFzE00AgKbe1gj";
 
   const onToken = (token) => {
-    console.log(token);
     alert("Payment successful wala ka na pera");
   };
 

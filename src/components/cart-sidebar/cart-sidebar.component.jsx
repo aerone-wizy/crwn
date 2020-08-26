@@ -9,7 +9,7 @@ import { selectCartItems } from "../../redux/cart/cart.selector";
 import "./cart-sidebar.styles.scss";
 
 const CartSidebar = ({ cartItems, history }) => {
-  console.log(cartItems);
+  // console.log(cartItems);
   return (
     <div className="cart-sidebar">
       <div className="cart-items">

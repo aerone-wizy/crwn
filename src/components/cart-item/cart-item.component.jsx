@@ -21,7 +21,7 @@ const CartItem = ({ item, clearItem, cartItem }) => (
 
 const mapDispatchToProps = (dispatch) => ({
   clearItem: (item) => {
-    console.log(item);
+    // console.log(item);
     dispatch(clearItemFromCart(item));
   },
 });
