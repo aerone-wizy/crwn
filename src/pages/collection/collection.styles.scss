@@ -1,6 +1,8 @@
 .collection-page {
   display: flex;
   flex-direction: column;
+  margin-right: 15%;
+  margin-top: 60px;
 
   .title {
     font-size: 38px;
@@ -9,8 +11,7 @@
 
   .items {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
 
     & .collection-item {
       margin-bottom: 30px;

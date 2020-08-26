@@ -1,9 +1,12 @@
 .header {
+  position: fixed;
+  top: 0;
   height: 70px;
-  width: 100%;
+  width: 95%;
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
+  background-color: #fff;
 
   .logo-container {
     height: 100%;
