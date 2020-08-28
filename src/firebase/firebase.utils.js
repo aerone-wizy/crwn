@@ -40,6 +40,74 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   return userRef;
 };
 
+export const addCollectionAndDocuments = async (
+  collectionKey,
+  objectsToAdd
+) => {
+  const collectionRef = firestore.collection(collectionKey);
+
+  const batch = firestore.batch();
+  objectsToAdd.forEach((obj) => {
+    const newDocRef = collectionRef.doc();
+    batch.set(newDocRef, obj);
+  });
+
+  return await batch.commit();
+};
+
+export const convertCollectionsSnapshotToMap = (collections) => {
+  const transformedCollection = collections.docs.map((doc) => {
+    const { title, items } = doc.data();
+
+    return {
+      routeName: encodeURI(title.toLowerCase()),
+      id: doc.id,
+      title,
+      items,
+    };
+  });
+
+  return transformedCollection.reduce((accumulator, collection) => {
+    accumulator[collection.title.toLowerCase()] = collection;
+    return accumulator;
+  }, {});
+};
+
+export const createNewItem = (newItem) => {
+  const collectionRef = firestore.collection("collections");
+  // console.log();
+  // console.log(newItem);
+  const docId = (type) => {
+    switch (type) {
+      case "sneakers":
+        return "5PYb2tPZxQON4f9bJh5u";
+      case "jackets":
+        return "sXDIWhNzgAhMBajrk0aB";
+      case "hats":
+        return "eYNiSob8Z7QipK7bWHBG";
+      case "mens":
+        return "IDKcfLCdyDyY7U2g5aEr";
+      case "womens":
+        return "JEDxiFosRjzbLIX9RAGA";
+      case "test":
+        return "wkF41CrOWnbpT2CYiOmr";
+      default:
+        break;
+    }
+  };
+  // console.log();
+  // const timeStamp
+
+  collectionRef.doc(docId(newItem.type)).update({
+    items: firebase.firestore.FieldValue.arrayUnion({
+      id: new Date().getTime(),
+      name: newItem.name,
+      imageUrl: newItem.imageUrl,
+      price: newItem.price,
+    }),
+  });
+};
+
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
