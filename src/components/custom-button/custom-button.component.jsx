@@ -4,10 +4,8 @@ import React from "react";
 
 import { CustomButtonContainer } from "./custom-button.styles";
 
-const CustomButton = ({ children, props, onClick }) => (
-  <CustomButtonContainer {...props} onClick={onClick}>
-    {children}
-  </CustomButtonContainer>
+const CustomButton = (props) => (
+  <CustomButtonContainer {...props}>{props.children}</CustomButtonContainer>
 );
 
 export default CustomButton;
