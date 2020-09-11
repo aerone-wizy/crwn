@@ -117,6 +117,10 @@ export const getCurrentUser = () => {
   });
 };
 
+export const signOutCurrentUser = () => {
+  auth.signOut();
+};
+
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
